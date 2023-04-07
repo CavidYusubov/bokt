@@ -1,0 +1,95 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0" />
+    <title>Distechsol Biostar</title>
+    <link href="~/Content/Site.css" rel="stylesheet" /> 
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <dx:ASPxPanel ID="HeaderPane" runat="server" FixedPosition="WindowTop" Width="1600px"
+            CssClass="headerPane" ClientInstanceName="headerPane" Collapsible="True">
+            <SettingsAdaptivity CollapseAtWindowInnerWidth="1200" />
+            <Styles>
+                <ExpandedPanel CssClass="expanded"></ExpandedPanel>
+                <ExpandBar CssClass="bar"></ExpandBar>
+            </Styles>
+            <PanelCollection>
+                <dx:PanelContent runat="server" SupportsDisabledAttribute="True">
+                    <div class="content-wrapper">
+                        <h1 class="headerTitle">Distechsol Biostar</h1>
+                        <dx:ASPxMenu ID="HeaderMenu" runat="server" CssClass="headerMenu" 
+                            ClientInstanceName="headerMenu" OnItemClick="HeaderMenu_ItemClick">
+                            <items>
+                                <dx:MenuItem Text="Monitoring" NavigateUrl="~/Monitoring.aspx"></dx:MenuItem>
+                                <dx:MenuItem Text="Reports" NavigateUrl="~/Default.aspx"></dx:MenuItem>
+                                <dx:MenuItem Text="Timesheet" NavigateUrl="~/Timesheet.aspx"></dx:MenuItem>
+                                <dx:MenuItem Text="Employee" NavigateUrl="~/Employee.aspx"></dx:MenuItem>
+                                <dx:MenuItem Text="Options" NavigateUrl="~/Options.aspx"></dx:MenuItem>
+                                <dx:MenuItem Text="Refresh Data" Name="RefreshData"></dx:MenuItem>
+                            </items>
+                            <border borderwidth="0px" />
+                            <ClientSideEvents ItemClick="function(s, e) {
+	if (e.item.name == 'RefreshData') { e.processOnServer = confirm(&quot;Are you sure?&quot;); return; } 
+}" />
+                            <paddings padding="0px" />
+                        </dx:ASPxMenu>
+                    </div>
+                </dx:PanelContent>
+            </PanelCollection>
+            <ExpandBarTemplate>
+                <h1 class="headerTitle">Timesheet</h1>
+            </ExpandBarTemplate>
+        </dx:ASPxPanel>
+
+        <script type="text/javascript">
+            function updateHeaderMenuOrientation(){
+                if (!window.headerMenu) return;
+                var orientation = headerPane.IsExpandable() ? 'Vertical' : 'Horizontal';
+                if(orientation !== headerMenu.GetOrientation()) 
+                    headerMenu.SetOrientation(orientation);
+            }
+        </script>
+
+        <dx:ASPxGlobalEvents runat="server">
+            <ClientSideEvents ControlsInitialized="updateHeaderMenuOrientation" BrowserWindowResized="updateHeaderMenuOrientation" />
+        </dx:ASPxGlobalEvents>
+
+        <div class="content-wrapper">
+            <div class="content">
+                <asp:ContentPlaceHolder ID="MainContent" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+<!---------
+            <div id="footer" class="content-wrapper">
+
+                <center><p>&copy; <%: DateTime.Now.Year %> - Distechsol copyright</p></center>
+
+
+            </div>
+-->
+        </div>
+
+
+
+
+    </form>
+
+        <style type="text/css">
+  #footer 
+  {
+      
+    position : absolute;
+    bottom : 0;
+    height : 40px;
+    margin-top : 40px;
+  }
+</style>
+
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+﻿html, body
+{
+    background-color: #ffffff;
+    font: 14px 'Segoe UI','Helvetica Neue','Droid Sans',Arial,Tahoma,Geneva,Sans-serif;
+    margin: 0;
+    padding: 0;
+}
+h1, h2, h3
+{
+  font-weight: normal;
+}
+h1
+{
+  font-size: 34px;
+}
+h2
+{
+  font-size: 28px;
+}
+h3
+{
+  font-size: 22px;
+}
+.content-wrapper
+{
+    box-sizing: border-box;
+    margin: 0 auto; 
+    padding: 0 12px; 
+    width: 100%;
+    max-width: 1600px;
+}
+.headerPane.expanded .content-wrapper
+{
+    padding: 0;
+    max-width: initial;
+}
+.footer
+{
+    padding: 12px 0; 
+}
+.headerPane
+{
+    padding: 0!important;
+    min-width: 490px;
+}
+.headerPane.bar
+{
+    padding: 0 12px!important;
+}
+.headerPane.expanded
+{
+    padding: 2px!important;
+}
+.headerTitle
+{
+    display: block;
+    float: left;
+    margin: 18px 0;
+}
+.headerPane.expanded .headerTitle
+{
+    display: none;
+}
+.headerMenu
+{
+    float: right!important;
+    margin: 28px 0 15px;
+}
+.headerPane.expanded .headerMenu
+{
+    float: none!important;
+    margin: 0;
+    width: 100%;
+}
